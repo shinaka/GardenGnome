@@ -14,6 +14,7 @@ CGardenGnome::CGardenGnome(int _relaypin)
 void CGardenGnome::begin()
 {
 	pinMode(3, OUTPUT);
+	digitalWrite(3, LOW);
 	soilSensor.begin();
 	radio.begin();
 #if IS_TESTING == 1

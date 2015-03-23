@@ -12,11 +12,11 @@ void PollingSensorState::StateStarting()
 	int value = soilSensor->GetSensorValue();
 	if (value < 500)
 	{
-		digitalWrite(3, HIGH);
+		digitalWrite(3, LOW);
 	}
 	else
 	{
-		digitalWrite(3, LOW);
+		digitalWrite(3, HIGH);
 	}
 	SLOG(value);
 }
