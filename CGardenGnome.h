@@ -20,7 +20,7 @@ protected:
 	GGState* States[EGGState::MAX];
 	EGGState::Type CurrentState;
 	RF24 radio = RF24(7, 8);
-	byte addresses[2][6];
+	byte addresses[2][6] = { "GNOME", "TRMNL" };
 	SoilSensor soilSensor = SoilSensor(2, A0);
 };
 
