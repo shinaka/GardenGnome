@@ -1,8 +1,8 @@
 #include "PollingSensorState.h"
 #include "GGLogging.h"
-PollingSensorState::PollingSensorState(CGardenGnome* Owner)
+PollingSensorState::PollingSensorState(SoilSensor* ss)
 {
-	soilSensor = Owner->GetSoilSensor();
+	soilSensor = ss;
 }
 
 void PollingSensorState::StateStarting()

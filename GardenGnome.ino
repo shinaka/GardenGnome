@@ -1,3 +1,4 @@
+#include "CGardenGnome.h"
 #include "PollingSensorState.h"
 #include "StartingSensor.h"
 #include "ListenState.h"
@@ -9,10 +10,6 @@
 #include <nRF24L01.h>
 #include "GGLogging.h"
 #include "SoilSensor.h"
-#include "CGardenGnome.h"
-
-CGardenGnome gardenGnome = CGardenGnome(4);
-
 
 void setup()
 {
@@ -20,14 +17,14 @@ void setup()
 	Serial.begin(57600);
 	SLOG("Debugging GardenGnome Enabled.");	
 #endif
-
-	gardenGnome.begin();
+	G_GGnome = CGardenGnome();
+	G_GGnome.begin();
 }
 
 void loop()
 {
 	//SLOG("Loop");
-	gardenGnome.UpdateSM();
+	G_GGnome.UpdateSM();
 	/*
 	if (lastSoilRead == 0 || micros() - lastSoilRead > SOIL_TEST_RATE)
 	{

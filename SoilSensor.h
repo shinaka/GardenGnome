@@ -17,5 +17,7 @@ public:
 protected:
 	int SensorPin;
 	int PowerPin;
+	int lastReadValue;
+	unsigned long lastReadTime;
 };
 

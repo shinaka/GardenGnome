@@ -3,28 +3,30 @@
 #include "PollingSensorState.h"
 #include "StartingSensor.h"
 #include "GGLogging.h"
+#include "GGDefines.h"
 
-CGardenGnome::CGardenGnome(int _relaypin)
+CGardenGnome::CGardenGnome()
 {
-	States[EGGState::Listening] = new ListenState(this);
-	States[EGGState::PollingSensor] = new PollingSensorState(this);
-	States[EGGState::StartingSensor] = new StartingSensorState(this);
+	radio = new RF24(RF24_MISO_PIN, RF24_MOSI_PIN);
 }
 
 void CGardenGnome::begin()
 {
-	pinMode(3, OUTPUT);
-	digitalWrite(3, LOW);
+	States[EGGState::Listening] = new ListenState(radio);
+	States[EGGState::PollingSensor] = new PollingSensorState(&soilSensor);
+	States[EGGState::StartingSensor] = new StartingSensorState(&soilSensor);
+	pinMode(RELAY_DATA_PIN, OUTPUT);
+	digitalWrite(RELAY_DATA_PIN, LOW);
 	soilSensor.begin();
-	radio.begin();
+	radio->begin();
 #if IS_TESTING == 1
-	radio.setPALevel(RF24_PA_LOW);
+	radio->setPALevel(RF24_PA_LOW);
 #else
 	radio.setPALevel(RF24_PA_HIGH);
 #endif 
-	radio.openWritingPipe(addresses[1]);
-	radio.openReadingPipe(1, addresses[0]);
-	radio.startListening();
+	radio->openWritingPipe(addresses[1]);
+	radio->openReadingPipe(1, addresses[0]);
+	radio->startListening();
 	CurrentState = EGGState::Listening;
 	States[CurrentState]->StateStarting();
 }

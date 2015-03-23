@@ -1,0 +1,13 @@
+#pragma once
+
+//Pin Assignments
+#define RF24MISO_PIN 7
+#define RF24MOSI_PIN 8
+#define SOIL_SENSOR_D_PIN 2
+#define SOIL_SENSOR_A_PIN A0
+#define RELAY_DATA_PIN 3
+
+//Timers
+#define STARTING_STATE_DURATION 1000000 //1 second
+#define LISTEN_STATE_DURATION 5000000//600000000 //10 minutes
+#define WATERING_COOLDOWN_TIME 3600000000 //1 hr

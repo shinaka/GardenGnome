@@ -1,9 +1,11 @@
-#define STARTING_STATE_DURATION 5000000 //1 second
+
 #include "StartingSensor.h"
 #include "GGLogging.h"
-StartingSensorState::StartingSensorState(CGardenGnome* Owner)
+#include "GGDefines.h"
+
+StartingSensorState::StartingSensorState(SoilSensor* ss)
 {
-	soilSensor = Owner->GetSoilSensor();
+	soilSensor = ss;
 }
 
 void StartingSensorState::StateStarting()

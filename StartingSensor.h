@@ -4,7 +4,7 @@
 class StartingSensorState : public GGState
 {
 public:
-	StartingSensorState(CGardenGnome* Owner);
+	StartingSensorState(SoilSensor* ss);
 	virtual void StateStarting() override;
 	virtual void StateEnding() override;
 	virtual void StateUpdate() override;

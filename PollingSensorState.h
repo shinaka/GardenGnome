@@ -1,10 +1,11 @@
+#pragma once
 #include "GGState.h"
 #include "CGardenGnome.h"
 #include "SoilSensor.h"
 class PollingSensorState : public GGState
 {
 public:
-	PollingSensorState(CGardenGnome* Owner);
+	PollingSensorState(SoilSensor* ss);
 	virtual void StateStarting() override;
 	virtual void StateEnding() override;
 	virtual void StateUpdate() override;

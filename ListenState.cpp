@@ -1,18 +1,15 @@
 // 
 // 
 // 
-#define LISTEN_STATE_DURATION 5000000 //1 minute
-#include <SPI.h>
-#include <RF24_config.h>
-#include <RF24.h>
-#include <nRF24L01.h>
+
+
 #include "ListenState.h"
 #include "Arduino.h"
 #include "GGLogging.h"
 
-ListenState::ListenState(CGardenGnome* creator)
+ListenState::ListenState(RF24* _radio)
 {
-	radio = creator->GetRadio();
+	radio = _radio;
 }
 
 void ListenState::StateStarting()

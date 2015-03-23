@@ -15,8 +15,8 @@ SoilSensor::SoilSensor(int _powerpin, int _sensorpin)
 int SoilSensor::GetSensorValue()
 {
 	SLOG("Get Sensor Value");
-	//We need to wake the sensor up (HIGH), wait a few ms, then read out the AnalogIn
-	return analogRead(SensorPin);
+	lastReadTime = micros();
+	return lastReadValue = analogRead(SensorPin);
 }
 
 void SoilSensor::begin()

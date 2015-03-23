@@ -1,5 +1,10 @@
+#pragma once
 #include "GGState.h"
 #include "CGardenGnome.h"
+#include <SPI.h>
+#include <RF24_config.h>
+#include <RF24.h>
+#include <nRF24L01.h>
 
 namespace ERequestType
 {
@@ -19,7 +24,7 @@ struct RemoteRequest
 class ListenState : public GGState
 {
 public:
-	ListenState(CGardenGnome* creator);
+	ListenState(RF24* _radio);
 	virtual void StateStarting() override;
 	virtual void StateEnding() override;
 	virtual void StateUpdate() override;
